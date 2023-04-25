@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author Burak
  */
 public class Book {
+    private static Book instance;
       private String ID;  
   private String authorName;
   private String authorSurname;
@@ -40,6 +41,12 @@ public class Book {
         myAtomicBoolean.set(newValue);
     }
 
+public static Book getInstance(String ID, String authorName, String authorSurname, String nameOfBook, String genre, boolean initialValue) {
+        if (instance == null) {
+            instance = new Book(ID, authorName, authorSurname, nameOfBook, genre, initialValue);
+        }
+        return instance;
+    }
 
     public String getID() {
         return ID;

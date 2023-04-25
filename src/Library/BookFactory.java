@@ -15,7 +15,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,7 +24,8 @@ import java.util.Scanner;
  */
 public class BookFactory {
    
-  
+  public List<Book> borrowedBookList = new ArrayList<>();  
+
   
    
     public static String[][] BookFactory() throws FileNotFoundException { //read from file and write in 2D String Array 
@@ -93,9 +93,18 @@ for(int i = 0; i<result.length; i++) {
     }  
 		}
  
+
+ public static boolean isObjectInArrayList(Book book, List<Book> bookList) {
+     
+    return bookList.contains(book);
+}
+
+ 
   public Book searchingBookbyId( List<Book> books) throws FileNotFoundException {
-        Borrow myBorrow=new Borrow();
-       List<Book> borrowedBooks =myBorrow.getBorrowedBookList();  
+      
+         
+      
+       System.out.println("borrowedddd!!!!!!!!!!!!!!!!!!!!!!!!!!"+borrowedBookList);
       System.out.println("Please enter the ID of Book you are looking for:"); 
         Scanner scan = new Scanner(System.in);
         String bookId=scan.nextLine();
@@ -105,11 +114,18 @@ for(int i = 0; i<result.length; i++) {
         for (int i = 0; i < books.size(); i++) {
             if (bookId.equalsIgnoreCase(books.get(i).getID())) { 
                 System.out.println("Here is the Book you are looking for: " + books.get(i));
-              if (!borrowedBooks.contains(books.get(i))) {
+               
+              if (!isObjectInArrayList(books.get(i),borrowedBookList)) {
+                  
+                      System.out.println("KOOOOOOOOOOOOOOOOOD"+books.get(i).hashCode());
+                      
                         System.out.println("THE BOOK IS AVAILABLE");
-                        
+                        borrowedBookList.add(books.get(i)); // Kitap ödünç alındığı için borrowedBookList'e ekle
+   
                       return books.get(i); 
-                    }       
+                    }    
+              else{
+                  System.out.println("kitap alinmis");}
               }
        isFound = true;
             }
@@ -119,6 +135,35 @@ for(int i = 0; i<result.length; i++) {
         }
     
     return null; }
+
+// 
+//  public Book searchingBookbyId( List<Book> books) throws FileNotFoundException {
+//        Borrow myBorrow=new Borrow();
+//       List<Book> borrowedBooks =myBorrow.getBorrowedBookList();  
+//       
+//      System.out.println("Please enter the ID of Book you are looking for:"); 
+//        Scanner scan = new Scanner(System.in);
+//        String bookId=scan.nextLine();
+//    boolean isFound = false;
+//   
+//  
+//        for (int i = 0; i < books.size(); i++) {
+//            if (bookId.equalsIgnoreCase(books.get(i).getID())) { 
+//                System.out.println("Here is the Book you are looking for: " + books.get(i));
+//              if (!borrowedBooks.contains(books.get(i))) {
+//                        System.out.println("THE BOOK IS AVAILABLE");
+//                        
+//                      return books.get(i); 
+//                    }       
+//              }
+//       isFound = true;
+//            }
+//        
+//        if (!isFound) {
+//            System.out.println("There is no Book with this ID ");
+//        }
+//    
+//    return null; }
       
       
       

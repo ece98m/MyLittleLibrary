@@ -26,16 +26,11 @@ public class Borrow {
       studentFactory factory=new studentFactory();
       BookFactory myBookFactory= new BookFactory();
       List<Loan> recordsOfBorrowings = new ArrayList<>();  
-      List<Book> borrowedBookList = new ArrayList<>();  
+      public List<Book> borrowedBookList = new ArrayList<>();  
 
-    public List<Book> getBorrowedBookList() {
-        return borrowedBookList;
-    }
+    
 
-    public void setRecordsOfBorrowings(List<Loan> recordsOfBorrowings) {
-        this.recordsOfBorrowings = recordsOfBorrowings;
-    }
-         
+  
       
                  
                  
@@ -44,20 +39,23 @@ public class Borrow {
 public void borrowBook(ArrayList<student> studentList) throws FileNotFoundException {
    
     List<Book> books = listOfBooks();
-
-    Scanner scan = new Scanner(System.in);
+  
+    
   Book myBook=myBookFactory.searchingBookbyId(books);
   student myStudent=factory.searchStudentById(studentList);
     Loan borrow = new Loan(myBook, myStudent, new Date(), null);
                    this.recordsOfBorrowings.add(borrow);
-                   this.borrowedBookList.add(myBook);
-                   System.out.println(myBook.getNameOfBook() );
+                   borrowedBookList.add(myBook);
+                
     System.out.println(borrow);
+    System.out.println("!!!!!"+this.borrowedBookList);
 }
 
 
 
 }
+
+
 //    public Borrow {
 //       this.currentlyBorrowedBooks=
 //}
