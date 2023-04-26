@@ -21,7 +21,8 @@ public class BookWaitList {
     private int front;//index of the front element
     private int back; //index of the back element
     
-      public BookWaitList(){
+      public BookWaitList(Book book){
+        this.book=book;
         this.waitlist= new ArrayList();
         this.queueSize=0;
         this.front=-1;
@@ -30,8 +31,9 @@ public class BookWaitList {
 
  
     public boolean Enqueue(student newStudent) {    
-        if (front==-1){   //ilk öğrenci girdiğinde front 0 olue // her zaman ya sıfır ya da -1 demek empty
-            front++;
+        if (waitlist.isEmpty()){   //ilk öğrenci girdiğinde front 0 olue // her zaman ya sıfır ya da -1 demek empty
+            
+           waitlist.add(0, newStudent);  
         }        
         back++;  //her öğr girdiğinde bir artar yani son öğrencinin indexini tutar
         int last=waitlist.size()-1;

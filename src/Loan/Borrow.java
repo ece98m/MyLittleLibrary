@@ -28,6 +28,7 @@ public class Borrow {
       List<Loan> recordsOfBorrowings = new ArrayList<>();  
       public List<Book> availableBookList = new ArrayList<>(); 
       LoanUtility n=new LoanUtility();
+     
     public Borrow() throws FileNotFoundException {
         this.availableBookList=listOfBooks();
     }
@@ -70,7 +71,7 @@ public boolean borrowBook(ArrayList<student> studentList) throws FileNotFoundExc
             System.out.println("Bu kitabi biri daha once almis");
             System.out.println("\n\n Do you want to get in the queue for this book");
             if (n.optionWiser()){
-            
+            //hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
             }
      
             
@@ -107,14 +108,8 @@ public void ReturnBook(ArrayList<student> studentList) throws FileNotFoundExcept
 }
 
 
-public void GetInTheQueue(){
 
-
-
-}
-     
     
-
 
 
 
