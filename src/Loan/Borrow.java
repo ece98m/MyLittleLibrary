@@ -27,7 +27,7 @@ public class Borrow {
       BookFactory myBookFactory= new BookFactory();
       List<Loan> recordsOfBorrowings = new ArrayList<>();  
       public List<Book> availableBookList = new ArrayList<>(); 
-
+      LoanUtility n=new LoanUtility();
     public Borrow() throws FileNotFoundException {
         this.availableBookList=listOfBooks();
     }
@@ -47,10 +47,10 @@ this.availableBookList.add(book);
                  
  
  
-public void borrowBook(ArrayList<student> studentList) throws FileNotFoundException {
-
+public boolean borrowBook(ArrayList<student> studentList) throws FileNotFoundException {
+   Scanner scan= new Scanner(System.in);
     List<Book> books = listOfBooks();
-    System.out.println(availableBookList);
+   // System.out.println(availableBookList);
    
   Book myBook=myBookFactory.searchingBookbyId(books);
   student myStudent=factory.searchStudentById(studentList);
@@ -67,11 +67,20 @@ public void borrowBook(ArrayList<student> studentList) throws FileNotFoundExcept
                  this.availableBookList.remove(availableBookList.get(i)); }
     }
         if (!isFound) {
-            System.out.println("Bu kitabi biri daha once almis");}
+            System.out.println("Bu kitabi biri daha once almis");
+            System.out.println("\n\n Do you want to get in the queue for this book");
+            if (n.optionWiser()){
+            
+            }
+     
+            
+        
+        }
            
     
 }
 else{System.out.println("İSLEM BASARISIZ");}
+    return isFound;
 }
 
 
@@ -95,6 +104,13 @@ public void ReturnBook(ArrayList<student> studentList) throws FileNotFoundExcept
             else{System.out.println("you could not return");}
     }}
     else{System.out.println("ISLEM BASARISIZ");}
+}
+
+
+public void GetInTheQueue(){
+
+
+
 }
      
     

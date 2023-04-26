@@ -7,9 +7,8 @@ package mylittlelibrary;
 
 import Library.BookFactory;
 import static Library.BookFactory.*;
-
 import Loan.Borrow;
-
+import Loan.LoanUtility;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -35,7 +34,7 @@ public class MyLittleLibrary {
         BookFactory myBookFactory=new BookFactory();
        studentFactory students=new studentFactory();
      ArrayList<student> StudentList=students.createStudentFile();
-   
+      LoanUtility n=new LoanUtility();
     
          int myInput; 
      boolean valid=true;
@@ -53,7 +52,7 @@ public class MyLittleLibrary {
         System.out.println("7-) >>> Register that a student has returned a book.<<<");
         System.out.println("8-) >>> Display to the user the next student waiting for specific book <<<\n");
         System.out.println("9-) >>> For a specific student, list the books that they have borrowed<<<");
-        System.out.println("0-) >>> Go back to main menu <<<\n");
+        System.out.println("0-) >>> Go back to main menu <<<\n"); 
                   
       
        
@@ -128,12 +127,12 @@ public class MyLittleLibrary {
                break;
                   case 8:
                                 
-            
+                      System.out.println(n.optionWiser());
                
                break;
              
                 case 9:
-                    System.out.println(listOfBooks());  
+                 
                    
                break;
                 case 10:
