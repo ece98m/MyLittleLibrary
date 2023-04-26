@@ -26,9 +26,20 @@ public class Borrow {
       studentFactory factory=new studentFactory();
       BookFactory myBookFactory= new BookFactory();
       List<Loan> recordsOfBorrowings = new ArrayList<>();  
-      public List<Book> borrowedBookList = new ArrayList<>();  
+      public List<Book> availableBookList = new ArrayList<>(); 
+
+    public Borrow() throws FileNotFoundException {
+        this.availableBookList=listOfBooks();
+    }
 
     
+public void Borrow(Book book){
+this.availableBookList.remove(book);
+}
+
+public void ReturnTheBook(Book book){
+this.availableBookList.add(book);
+}
 
   
       
@@ -37,30 +48,104 @@ public class Borrow {
  
  
 public void borrowBook(ArrayList<student> studentList) throws FileNotFoundException {
-   
+
     List<Book> books = listOfBooks();
-  
-    
+    System.out.println(availableBookList);
+   
   Book myBook=myBookFactory.searchingBookbyId(books);
   student myStudent=factory.searchStudentById(studentList);
-    Loan borrow = new Loan(myBook, myStudent, new Date(), null);
-                   this.recordsOfBorrowings.add(borrow);
-                   borrowedBookList.add(myBook);
-                
-    System.out.println(borrow);
-    System.out.println("!!!!!"+this.borrowedBookList);
+  String name=myBook.getID();
+ boolean isFound = false;
+    if (myBook!=null && myStudent!=null){
+    for (int i = 0; i < availableBookList.size(); i++) {
+            if (name.equalsIgnoreCase(availableBookList.get(i).getID())) { 
+                   System.out.println("buradaaaaaaaa");
+                 isFound =true;
+                      Loan borrow = new Loan(myBook, myStudent, new Date(), null);
+                  this.recordsOfBorrowings.add(borrow);
+                  Borrow(availableBookList.get(i));
+                 this.availableBookList.remove(availableBookList.get(i)); }
+    }
+        if (!isFound) {
+            System.out.println("Bu kitabi biri daha once almis");}
+           
+    
+}
+else{System.out.println("İSLEM BASARISIZ");}
+}
+
+
+public void ReturnBook(ArrayList<student> studentList) throws FileNotFoundException {
+
+    List<Book> books = listOfBooks();
+    System.out.println(availableBookList);
+   
+  Book myBook=myBookFactory.searchingBookbyId(books);
+  student myStudent=factory.searchStudentById(studentList);
+  String name=myBook.getID();
+
+    if (myBook!=null && myStudent!=null){
+       for (int i = 0; i < availableBookList.size(); i++) {
+            if (!name.equalsIgnoreCase(availableBookList.get(i).getID())) { 
+                System.out.println("you returned the book");
+                  Loan returnTheBook = new Loan(myBook, myStudent, null, new Date());
+                  this.recordsOfBorrowings.add(returnTheBook);
+                  ReturnTheBook(availableBookList.get(i));
+            break;}
+            else{System.out.println("you could not return");}
+    }}
+    else{System.out.println("ISLEM BASARISIZ");}
+}
+     
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
 
-}
 
 
-//    public Borrow {
-//       this.currentlyBorrowedBooks=
-//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
-         
+        //     if (myBook!=null && myStudent!=null && (myBookFactory.searchingBookbyId(availableBookList)!=null)){
+//          Loan borrow = new Loan(myBook, myStudent, new Date(), null);
+//         this.recordsOfBorrowings.add(borrow);
+//         this.availableBookList.remove(myBook);
+//         System.out.println("tebrikler");
+//    
+//     }else if(myBook==null) {System.out.println("Kitap zaten odunc alınmıs");}
+//     else if(myStudent==null){System.out.println("ogrenci bulunamadı");} 
 
 
 
