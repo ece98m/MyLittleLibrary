@@ -2,13 +2,7 @@
 
 
 package Library;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-
-import java.util.concurrent.atomic.AtomicBoolean;
 import student.student;
 
 /**
@@ -17,7 +11,7 @@ import student.student;
  */
 public class Book {
  
-      private String ID;  
+  private String ID;  
   private String authorName;
   private String authorSurname;
   private String nameOfBook;

@@ -52,21 +52,7 @@ public class Loan {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(dateReturned);
     }
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public void setBorrower(student borrower) {
-        this.borrower = borrower;
-    }
-
-    public void setIssuedDate(Date issuedDate) {
-        this.issuedDate = issuedDate;
-    }
-
-    public void setDateReturned(Date dateReturned) {
-        this.dateReturned = dateReturned;
-    }
+ 
 
     
     

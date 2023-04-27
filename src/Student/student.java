@@ -13,7 +13,7 @@ public class student {
 
     private String studentName;
     private String studentSurname;
-    private int ID ;
+ //   private int ID ;
    // private int adress;
     private static int lastStudentID=0;
     private int studentID;

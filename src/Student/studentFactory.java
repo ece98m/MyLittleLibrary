@@ -20,8 +20,9 @@ import java.util.Scanner;
  */
 
     public class studentFactory {
-     private ArrayList<student> studentList;
-  private ArrayList<student> copOfStudentList;
+    private ArrayList<student> studentList;
+    private ArrayList<student> copOfStudentList;
+    
     public studentFactory(){
         // this.studentList= new ArrayList();      }
     this.studentList= new ArrayList();
@@ -67,11 +68,6 @@ public ArrayList<student> getStudentList() {
 
     return new ArrayList<>(studentList);}
 
-
-
-    public void setStudentList(ArrayList<student> studentList) {
-        this.studentList = studentList;
-    }
 
     protected static String[] generateName() {
 		
