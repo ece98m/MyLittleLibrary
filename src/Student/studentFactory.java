@@ -42,7 +42,7 @@ public ArrayList<student> createStudentFile(){
         studentList.add(newStudent);
     }    
         //now we will write this student list into a text file
-         String filename = "C:\\Users\\Burak\\Desktop\\myLibrary3\\bu.txt";
+         String filename = "C:\\Users\\Burak\\Desktop\\MyLittleLibrary\\studentList.txt";
        
 try {
             FileWriter writer = new FileWriter(filename);

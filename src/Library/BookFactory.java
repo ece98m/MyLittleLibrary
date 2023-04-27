@@ -30,7 +30,7 @@ public class BookFactory {
    
     public static String[][] BookFactory() throws FileNotFoundException { //read from file and write in 2D String Array 
             
-            Scanner in = new Scanner(new File("data.txt"));
+Scanner in = new Scanner(new File("C:\\Users\\Burak\\Desktop\\MyLittleLibrary\\data.txt"));
 List<String[]> lines = new ArrayList<>();
 while(in.hasNextLine()) {
     String line = in.nextLine().trim();
