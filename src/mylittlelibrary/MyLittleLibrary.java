@@ -9,11 +9,8 @@ import Library.Book;
 import Library.BookFactory;
 import static Library.BookFactory.*;
 import Loan.Borrow;
-import Loan.Loan;
-import Loan.LoanUtility;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 import student.student;
 import student.studentFactory;
@@ -37,7 +34,6 @@ public class MyLittleLibrary {
         BookFactory myBookFactory=new BookFactory();
        studentFactory students=new studentFactory();
      ArrayList<student> StudentList=students.createStudentFile();
-      LoanUtility n=new LoanUtility();
     
          int myInput; 
      boolean valid=true;

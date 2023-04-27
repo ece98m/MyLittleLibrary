@@ -27,7 +27,6 @@ public class Borrow {
       BookFactory myBookFactory= new BookFactory();
       public List<Loan> recordsOfBorrowings = new ArrayList<>();  
       public List<Book> availableBookList = new ArrayList<>(); 
-      LoanUtility n=new LoanUtility();
      
     public Borrow() throws FileNotFoundException {
         this.availableBookList=listOfBooks();
