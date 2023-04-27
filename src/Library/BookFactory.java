@@ -76,7 +76,7 @@ for(int i = 0; i<result.length; i++) {
  
  public Book searchingBook() throws FileNotFoundException {
     
-     System.out.println("Please enter the name of Book you are looking for"); 
+     System.out.println("PLEASE ENTER THE BOOK NAME "); 
     Scanner scan=new Scanner(System.in);
     String bookName=scan.nextLine().toLowerCase();
  
@@ -84,11 +84,11 @@ for(int i = 0; i<result.length; i++) {
     for (int i=0; i<listOfBooks().size(); i++){
          if (bookName.equals(listOfBooks().get(i).getNameOfBook().toLowerCase() )){
              
-             System.out.println("Aradığınız kitap kütühanemizde bulunmaktadır" + listOfBooks().get(i));
+             System.out.println("\n THE BOOK YOU HAVE SEARCHED FOR: \n " + listOfBooks().get(i)+"\n");
              return listOfBooks().get(i);
          }
          else if ((listOfBooks().size()-1==i )&& (!bookName.equals(listOfBooks().get(i).getNameOfBook().toLowerCase()))){
-             System.out.println("Aradığınız kitap kütüphanede bulunmamaktadır");}
+             System.out.println("THE LITTLE LIBRARY DOES NOT HAVE THE THIS BOOK ");}
          
     
     }  
@@ -96,57 +96,16 @@ for(int i = 0; i<result.length; i++) {
  
 
  
-    
-
- 
-//  public Book searchingBookbyId( List<Book> books) throws FileNotFoundException {
-//      
-//         
-//      
-//       System.out.println("borrowedddd!!!!!!!!!!!!!!!!!!!!!!!!!!"+borrowedBookList);
-//      System.out.println("Please enter the ID of Book you are looking for:"); 
-//        Scanner scan = new Scanner(System.in);
-//        String bookId=scan.nextLine();
-//    boolean isFound = false;
-//   
-//  
-//        for (int i = 0; i < books.size(); i++) {
-//            if (bookId.equalsIgnoreCase(books.get(i).getID())) { 
-//                System.out.println("Here is the Book you are looking for: " + books.get(i));
-//                String bookName=books.get(i).getNameOfBook();
-//                for (String s: NamesOfTheBooks){
-//                    if (!bookName.equals(s)){
-//     
-//                      System.out.println("KOOOOOOOOOOOOOOOOOD"+books.get(i).hashCode());
-//                        
-//                        System.out.println("THE BOOK IS AVAILABLE");
-//                        borrowedBookList.add(books.get(i)); // Kitap ödünç alındığı için borrowedBookList'e ekle
-//   
-//                      return books.get(i); 
-//                    }  else{
-//                  System.out.println("kitap alinmis");} }  
-//             
-//              }
-//       isFound = true;
-//            }
-//        
-//        if (!isFound) {
-//            System.out.println("There is no Book with this ID ");
-//        }
-//    
-//    return null; }
-
- 
   public Book searchingBookbyId( List<Book> books) throws FileNotFoundException {
  
-      System.out.println("Please enter the ID of Book you are looking for:"); 
+      System.out.println("PLEASE ENTER THE BOOK ID :"); 
         Scanner scan = new Scanner(System.in);
         String bookId=scan.nextLine();
     boolean isFound = false;
 
         for (int i = 0; i < books.size(); i++) {
             if (bookId.equalsIgnoreCase(books.get(i).getID())) { 
-                System.out.println("Here is the Book you are looking for: " + books.get(i));   
+                System.out.println("\nTHE BOOK YOU HAVE SEARCHED FOR: \n " + books.get(i)+"\n");   
                  isFound =true;
                  return books.get(i);
                  
@@ -154,7 +113,7 @@ for(int i = 0; i<result.length; i++) {
       
             }   
         if (!isFound) {
-            System.out.println("There is no Book with this ID ");
+            System.out.println("THERE IS NO RECORD WITH THE ID YOU HAVE REGISTERED");
         }
     
     return null; }
@@ -184,9 +143,10 @@ for (int i = 0; i < liste.size() - 1; i++) {
         Collections.swap(liste, i, minIndex);
     }
 }
-
+     System.out.println("              ALPHABETICAL BOOK LIST BY TITLE");
+     System.out.println("-------------------------------------------------------------------------\n");
 for (String s : liste) {
-    System.out.println(s);
+    System.out.println("                 "+s);
 }
     
 }
