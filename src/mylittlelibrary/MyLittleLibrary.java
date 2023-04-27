@@ -9,9 +9,11 @@ import Library.Book;
 import Library.BookFactory;
 import static Library.BookFactory.*;
 import Loan.Borrow;
+import Loan.Loan;
 import Loan.LoanUtility;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 import student.student;
 import student.studentFactory;
@@ -45,17 +47,18 @@ public class MyLittleLibrary {
       
      
        
-                   System.out.println("                             LİBRARY MAİN MENU\n");
+                   System.out.println("                         MY LITTLE LIBRARY MAIN MENU\n");
         System.out.println("**************************************************************************************\n");
         System.out.println("1-) >>> Search for a specific book by title and/or author name. <<< \n");    //done 
         System.out.println("2-) >>> List all books by title and/or author name alphabetical order <<<\n");
-        System.out.println("3-) >>> Search for a specific student by name and/or ID. <<<\n");
-        System.out.println("4-) >>> List all students by alphabetical name and/or ID order. <<<\n");
-        System.out.println("5-) >>> Register that a student has borrowed a book.<<<");
+        System.out.println("3-) >>> Search for a specific student by ID. <<<\n");
+        System.out.println("4-) >>> List all students by alphabetical name <<<\n");
+        System.out.println("5-) >>> Register that a student has borrowed a book.<<<\n");
         System.out.println("6-) >>> Add that reader to waiting list (queue). <<<\n");
-        System.out.println("7-) >>> Register that a student has returned a book.<<<");
+        System.out.println("7-) >>> Register that a student has returned a book.<<<\n");
         System.out.println("8-) >>> Display to the user the next student waiting for specific book <<<\n");
-        System.out.println("9-) >>> For a specific student, list the books that they have borrowed<<<");
+        System.out.println("9-) >>> For a specific student, list the books that they have borrowed<<<\n");
+        System.out.println("10-)>>> EXIT THE PROGRAM<<<\n");
         System.out.println("0-) >>> Go back to main menu <<<\n"); 
                   
       
@@ -67,7 +70,7 @@ public class MyLittleLibrary {
 //  MAIN MENU TERMS
        while(valid){ 
           try{
-           System.out.println("Please enter a number: ");
+           System.out.println("PRESS ENTER A NUMBER FROM MAIN MENU (PRESS 0 TO SEE MENU): ");
        myInput=myScanner.nextInt();
        switch(myInput){
            case 1:
@@ -102,7 +105,7 @@ public class MyLittleLibrary {
           }  
              catch(Exception e){
              
-             System.out.println("Please enter only numbers");
+             System.out.println("Please enter numbers only");
                  System.out.println(valid2);
               myScanner.nextLine();
               
@@ -121,13 +124,23 @@ public class MyLittleLibrary {
                break;
              
                 case 6:
+                    System.out.println(borrow.availableBookList);  
                     Book book= myBookFactory.searchingBook();
                      student student=students.searchStudentById(students.getStudentList()); 
-                                System.out.println("önceki liste"+book.getList(book));
-                     book.Enqueue(student);
-                               System.out.println(book.getList(book));
-                               System.out.println(book.First());
-             
+                       String name=book.getID();
+                       boolean valid3=true;
+                      for (int i = 0; i < borrow.availableBookList.size(); i++) {
+                           if (name.equalsIgnoreCase(borrow.availableBookList.get(i).getID())) { 
+                             System.out.println("\nQUEUE IS NOT NECESSERY.BOOK IS ALREADY AVAILABLE\n");
+                             valid3=false;
+                            }}
+                      if(valid){
+                                book.Enqueue(student);
+                                System.out.println("\nWAITING QUEUE FOR THIS BOOK\n"+book.getList(book));
+                    
+//                               System.out.println(book.getList(book));
+//                               System.out.println(book.First());
+                      }
                break;
                 
                 case 7:
@@ -153,13 +166,14 @@ public class MyLittleLibrary {
         System.out.println("**************************************************************************************\n");
         System.out.println("1-) >>> Search for a specific book by title and/or author name. <<< \n");
         System.out.println("2-) >>> List all books by title and/or author name alphabetical order <<<\n");
-        System.out.println("3-) >>> Search for a specific student by name and/or ID. <<<\n");
-        System.out.println("4-) >>> List all students by alphabetical name and/or ID order. <<<\n");
-        System.out.println("5-) >>> Register that a student has borrowed a book.<<<");
+        System.out.println("3-) >>> Search for a specific student by ID. <<<\n");
+        System.out.println("4-) >>> List all students by alphabetical name<<<\n");
+        System.out.println("5-) >>> Register that a student has borrowed a book.\n<<<");
         System.out.println("6-) >>> Add that reader to waiting list (queue). <<<\n");
-        System.out.println("7-) >>> Register that a student has returned a book.<<<");
+        System.out.println("7-) >>> Register that a student has returned a book.\n<<<");
         System.out.println("8-) >>> Display to the user the next student waiting for specific book <<<\n");
-        System.out.println("9-) >>> For a specific student, list the books that they have borrowed<<<");
+        System.out.println("9-) >>> For a specific student, list the books that they have borrowed\n<<<");
+        System.out.println("10-)>>> EXIT THE PROGRAM\n");
         System.out.println("0-) >>> Go back to main menu <<<\n");
                   
                break;
@@ -187,3 +201,4 @@ public class MyLittleLibrary {
 
 
 }
+

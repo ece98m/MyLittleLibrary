@@ -42,25 +42,30 @@ public void ReturnTheBook(Book book){
 this.availableBookList.add(book);
 }
 
-  
-      
-                 
-                 
- 
- 
+public List<Book> GetAvailableBookList(){
+return this.availableBookList;
+}
+
 public boolean borrowBook(ArrayList<student> studentList) throws FileNotFoundException {
    Scanner scan= new Scanner(System.in);
     List<Book> books = listOfBooks();
    // System.out.println(availableBookList);
-   
   Book myBook=myBookFactory.searchingBookbyId(books);
+  if (myBook==null){
+      System.out.println("TRY AGAIN ! \n");
+         return false;}
+
   student myStudent=factory.searchStudentById(studentList);
+  if (myStudent==null){
+      System.out.println("TRY AGAIN ! \n");
+         return false;}
   String name=myBook.getID();
+  
  boolean isFound = false;
     if (myBook!=null && myStudent!=null){
     for (int i = 0; i < availableBookList.size(); i++) {
             if (name.equalsIgnoreCase(availableBookList.get(i).getID())) { 
-                   System.out.println("buradaaaaaaaa");
+                   System.out.println("\nYOU HAVE BORROWED THE BOOK SUCCESFULLY \n");
                  isFound =true;
                       Loan borrow = new Loan(myBook, myStudent, new Date(), null);
                   this.recordsOfBorrowings.add(borrow);
@@ -68,19 +73,11 @@ public boolean borrowBook(ArrayList<student> studentList) throws FileNotFoundExc
                  this.availableBookList.remove(availableBookList.get(i)); }
     }
         if (!isFound) {
-            System.out.println("Bu kitabi biri daha once almis");
-            System.out.println("\n\nBu kitabı almak için sıraya girmek istiyorsanız ana menüye dönüp6ya basın");
-          //  if (n.optionWiser()){
-            //hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-           // }
-     
-            
-        
-        }
-           
-    
+            System.out.println("THE BOOK HAS ALREADY BEEN BORROWED BY SOMEONE ELSE");
+            System.out.println("\nIF YOU WISH TO GET IN THE QUEUE FOR THIS BOOK GO BACK TO MAIN AND PRESS 6\n");   
+        }  
 }
-else{System.out.println("İSLEM BASARISIZ");}
+else{System.out.println("\nOPERATION FAILURE , TRY AGAIN\n");}
     return isFound;
 }
 
@@ -99,23 +96,15 @@ public void ReturnBook(ArrayList<student> studentList) throws FileNotFoundExcept
     if (myBook!=null && myStudent!=null){
        for (int i = 0; i < availableBookList.size(); i++) {
             if (!name.equalsIgnoreCase(availableBookList.get(i).getID())) { 
-                System.out.println("you returned the book");
+                System.out.println("\nYOU HAVE RETURNED THE BOOK SUCCESSFULY\n");
                   Loan returnTheBook = new Loan(myBook, myStudent, null, new Date());
                   this.recordsOfBorrowings.add(returnTheBook);
                   ReturnTheBook(availableBookList.get(i));
             break;}
-            else{System.out.println("you could not return");}
+            else{System.out.println("\nRETURN IS NOT SUCCESSFULL\n");}
     }}
-    else{System.out.println("ISLEM BASARISIZ");}
+    else{System.out.println("\nOPERATION FAILURE\n");}
 }
-
-
-
-    
-
-
-
-
 
 
 

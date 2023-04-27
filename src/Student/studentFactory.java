@@ -60,12 +60,11 @@ try {
     
          return studentList;
      }
+
+
+
 public ArrayList<student> getStudentList() {
-//    if (studentList.size() == 0) {
-//      
-//          return  studentList = createStudentFile();
-//        
-//    }
+
     return new ArrayList<>(studentList);}
 
 
@@ -85,7 +84,7 @@ public ArrayList<student> getStudentList() {
     
     public void searchStudentByName(){
     
-    System.out.println("Please enter the name of student you are looking for"); 
+    System.out.println("PLEASE ENTER STUDENT NAME :"); 
     
     Scanner scan=new Scanner(System.in);
     String studentName=scan.nextLine().toLowerCase();
@@ -94,10 +93,10 @@ public ArrayList<student> getStudentList() {
    
          if (studentName.equals(studentList.get(i).getStudentName().toLowerCase() )){
          
-             System.out.println("Here is the student member you are looking for :" + studentList.get(i));
+             System.out.println("\nSTUDENT MEMBER: " + studentList.get(i)+"\n");
          break;}
          else if((studentList.size()-1==i )&& (!studentName.equals(studentList.get(i).getStudentName().toLowerCase()))){
-             System.out.println("There is no member with this name that you registered in our library. ");}
+             System.out.println("\n NO MEMBER WITH THIS ID \n.");}
 }
 }
 
@@ -106,21 +105,21 @@ public ArrayList<student> getStudentList() {
 public student searchStudentById(ArrayList<student> studentList ) {
     Scanner scan = new Scanner(System.in);
     boolean isFound = false;
-    System.out.println("Please enter the ID of student you are looking for:"); 
+    System.out.println("PLEASE ENTER STUDENT ID :"); 
     try {
         int studentId = scan.nextInt();
         for (int i = 0; i < studentList.size(); i++) {
             if (studentId == studentList.get(i).getID()) {
-                System.out.println("Here is the student member you are looking for: " + studentList.get(i));
+                System.out.println("\nSTUDENT MEMBER: " + studentList.get(i)+"\n");
                 return studentList.get(i);
                 
             }
         }
         if (!isFound) {
-            System.out.println("There is no member with this ID that you registered in our library.");
+            System.out.println("\n NO MEMBER WITH THIS ID \n.");
         }
     } catch (InputMismatchException e) {
-        System.out.println("Error! Please enter only numbers.");
+        System.out.println("\n ERROR! PLEASE USE ONLY NUMBERS \n");
     }
     return null;
 }
@@ -147,9 +146,10 @@ for (int i = 0; i < liste.size() - 1; i++) {
         Collections.swap(liste, i, minIndex);
     }
 }
-
+    System.out.println("   ALPHABETICAL STUDENT LIST BY NAME    ");
+    System.out.println("--------------------------------------");
 for (String s : liste) {
-    System.out.println(s);
+    System.out.println("          "+s);
 }
     
 }
