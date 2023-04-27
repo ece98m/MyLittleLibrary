@@ -5,11 +5,13 @@
 package mylittlelibrary;
 
 
+import Library.Book;
 import Library.BookFactory;
 import static Library.BookFactory.*;
 import Loan.BookWaitList;
 import Loan.Borrow;
 import Loan.LoanUtility;
+import Loan.WaitList;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -41,13 +43,9 @@ public class MyLittleLibrary {
      boolean valid=true;
 
        Scanner myScanner=new Scanner(System.in);
-//        System.out.println("-------------------------------------------------------------");
-//        BookWaitList w= new BookWaitList(listOfBooks().get(0));
-//        w.Enqueue(StudentList.get(0));
-//        w.Enqueue(StudentList.get(1));
-//          w.Enqueue(StudentList.get(2));
-//         
-//        System.out.println(w);
+      
+      
+     
        
                    System.out.println("                             LİBRARY MAİN MENU\n");
         System.out.println("**************************************************************************************\n");
@@ -125,8 +123,13 @@ public class MyLittleLibrary {
                break;
              
                 case 6:
-                  // borrow.deneme();
-                   
+                    Book book= myBookFactory.searchingBook();
+                     student student=students.searchStudentById(students.getStudentList()); 
+                                System.out.println("önceki liste"+book.getList(book));
+                     book.Enqueue(student);
+                               System.out.println(book.getList(book));
+                               System.out.println(book.First());
+             
                break;
                 
                 case 7:

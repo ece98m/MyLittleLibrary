@@ -5,9 +5,11 @@ package Library;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import java.util.concurrent.atomic.AtomicBoolean;
+import student.student;
 
 /**
  *
@@ -20,10 +22,11 @@ public class Book {
   private String authorSurname;
   private String nameOfBook;
   private String genre;
- private final AtomicBoolean myAtomicBoolean;
-
+  private static ArrayList<student> waitlist=new ArrayList();
     
-
+  private int queueSize=0;//number of elements in my queue
+    private int front=-1;//index of the front element
+    private int back=-1; //index of the back element
    
 
     public Book(String ID, String authorName, String authorSurname, String nameOfBook, String genre,boolean initialValue) {
@@ -32,18 +35,83 @@ public class Book {
         this.authorSurname = authorSurname;
         this.nameOfBook = nameOfBook;
         this.genre = genre;
-         myAtomicBoolean = new AtomicBoolean(initialValue);
-      
+       
+        
     }
-     public boolean isMyAtomicBoolean() {
-        return myAtomicBoolean.get();
+     
+ public ArrayList<student> getList(Book book){
+
+    return waitlist;}  
+
+   
+    public boolean Enqueue(student newStudent) {    
+        
+          if (front==-1){
+            front++; // bu sadece ilk kez girdiğinde yapılıyor. yani sıfırı tutmak için
+        }        
+        back++;
+        waitlist.add(newStudent);
+        queueSize++;
+        return true;
+        
     }
 
-    public void setMyAtomicBoolean(boolean newValue) {
-        myAtomicBoolean.set(newValue);
+
+    public student Dequeue() {
+          //checks if queue is empty (works for both approaches)
+        if(queueSize==0){
+            return null;            
+        }
+        
+        //approach 1
+        if(queueSize==1){
+    //        student elementReturn = waitlist.get(front);
+            waitlist.remove(front);
+            front--;
+            back--;
+            queueSize--;
+            return waitlist.get(front);
+        }
+        waitlist.remove(front);
+      //  student elementReturn = waitlist.get(front);
+        back--;
+        queueSize--;
+        return waitlist.get(front);
+
     }
 
 
+    public student First() {
+        if(queueSize == 0){
+            return null;
+        }
+        return waitlist.get(0);
+        
+    }
+
+    public int size() {
+        return queueSize;
+    }
+
+    public boolean isEmpty() {
+        if (queueSize == 0){
+            return true;
+        }
+        return false;        
+    }
+
+    public String toStringList(){
+        String toReturn = "[ ";
+        
+        for(student s: waitlist){
+            toReturn += s+ ", ";
+                       
+        }
+        toReturn += " ]";
+        
+        return toReturn;
+    }
+    
 
     public String getID() {
         return ID;

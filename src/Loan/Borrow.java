@@ -69,10 +69,10 @@ public boolean borrowBook(ArrayList<student> studentList) throws FileNotFoundExc
     }
         if (!isFound) {
             System.out.println("Bu kitabi biri daha once almis");
-            System.out.println("\n\n Do you want to get in the queue for this book");
-            if (n.optionWiser()){
+            System.out.println("\n\nBu kitabı almak için sıraya girmek istiyorsanız ana menüye dönüp6ya basın");
+          //  if (n.optionWiser()){
             //hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-            }
+           // }
      
             
         
@@ -83,6 +83,8 @@ public boolean borrowBook(ArrayList<student> studentList) throws FileNotFoundExc
 else{System.out.println("İSLEM BASARISIZ");}
     return isFound;
 }
+
+
 
 
 public void ReturnBook(ArrayList<student> studentList) throws FileNotFoundException {

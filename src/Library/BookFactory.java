@@ -74,7 +74,7 @@ for(int i = 0; i<result.length; i++) {
 
  
  
- public  void searchingBook() throws FileNotFoundException {
+ public Book searchingBook() throws FileNotFoundException {
     
      System.out.println("Please enter the name of Book you are looking for"); 
     Scanner scan=new Scanner(System.in);
@@ -83,15 +83,16 @@ for(int i = 0; i<result.length; i++) {
    
     for (int i=0; i<listOfBooks().size(); i++){
          if (bookName.equals(listOfBooks().get(i).getNameOfBook().toLowerCase() )){
-         
+             
              System.out.println("Aradığınız kitap kütühanemizde bulunmaktadır" + listOfBooks().get(i));
-         break;}
+             return listOfBooks().get(i);
+         }
          else if ((listOfBooks().size()-1==i )&& (!bookName.equals(listOfBooks().get(i).getNameOfBook().toLowerCase()))){
              System.out.println("Aradığınız kitap kütüphanede bulunmamaktadır");}
          
     
     }  
-		}
+		return null;}
  
 
  

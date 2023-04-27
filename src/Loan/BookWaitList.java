@@ -7,6 +7,8 @@ package Loan;
 import Library.Book;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import student.student;
 
@@ -15,8 +17,9 @@ import student.student;
  * @author Burak
  */
 public class BookWaitList {
+   
     private Book book;
-    private ArrayList<student> waitlist;
+    private static ArrayList<student> waitlist;
     private int queueSize;//number of elements in my queue
     private int front;//index of the front element
     private int back; //index of the back element
@@ -28,39 +31,47 @@ public class BookWaitList {
         this.front=-1;
         this.back=-1;        
     }
+      
+      
+    public ArrayList<student> getList(Book book){
 
- 
+    return waitlist;}  
+
+   
     public boolean Enqueue(student newStudent) {    
-        if (waitlist.isEmpty()){   //ilk öğrenci girdiğinde front 0 olue // her zaman ya sıfır ya da -1 demek empty
-            
-           waitlist.add(0, newStudent);  
+        
+          if (front==-1){
+            front++; // bu sadece ilk kez girdiğinde yapılıyor. yani sıfırı tutmak için
         }        
-        back++;  //her öğr girdiğinde bir artar yani son öğrencinin indexini tutar
-        int last=waitlist.size()-1;
-        waitlist.add(last, newStudent);
+        back++;
+        waitlist.add(back, newStudent);
         queueSize++;
         return true;
+        
     }
 
 
     public student Dequeue() {
-        //checks if queue is empty (works for both approaches)
+          //checks if queue is empty (works for both approaches)
         if(queueSize==0){
             return null;            
         }
         
         //approach 1
         if(queueSize==1){
-            student student = waitlist.get(front);
-            front--;  //sıra boşaldı hiç index yok
+    //        student elementReturn = waitlist.get(front);
+            waitlist.remove(front);
+            front--;
             back--;
             queueSize--;
-            return student;
+            return waitlist.get(front);
         }
-        student student = waitlist.get(front);
+        waitlist.remove(front);
+      //  student elementReturn = waitlist.get(front);
         back--;
         queueSize--;
-        return student;
+        return waitlist.get(front);
+
     }
 
 
@@ -70,15 +81,6 @@ public class BookWaitList {
         }
         return waitlist.get(0);
         
-    }
-
-
-    public student Last() {
-        if(queueSize==0){
-            return null;
-        }     
-        int last=waitlist.size()-1;
-        return waitlist.get(last);
     }
 
     public int size() {
