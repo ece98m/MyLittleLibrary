@@ -117,25 +117,18 @@ public class Book {
         return ID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
+ 
     public String getAuthorName() {
         return authorName;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
+  
 
     public String getAuthorSurname() {
         return authorSurname;
     }
 
-    public void setAuthorSurname(String authorSurname) {
-        this.authorSurname = authorSurname;
-    }
+   
 
     public String getNameOfBook() {
         return nameOfBook;
@@ -149,9 +142,6 @@ public class Book {
         return genre;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
 
 
   
