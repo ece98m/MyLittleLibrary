@@ -56,9 +56,8 @@ public class MyLittleLibrary {
         System.out.println("5-) >>> Register that a student has borrowed a book.<<<\n");
         System.out.println("6-) >>> Add that reader to waiting list (queue). <<<\n");
         System.out.println("7-) >>> Register that a student has returned a book.<<<\n");
-        System.out.println("8-) >>> Display to the user the next student waiting for specific book <<<\n");
-        System.out.println("9-) >>> For a specific student, list the books that they have borrowed<<<\n");
-        System.out.println("10-)>>> EXIT THE PROGRAM<<<\n");
+        System.out.println("8-) >>> For a specific student, list the books that they have borrowed<<<\n");
+        System.out.println("9-)>>> EXIT THE PROGRAM<<<\n");
         System.out.println("0-) >>> Go back to main menu <<<\n"); 
                   
       
@@ -124,7 +123,7 @@ public class MyLittleLibrary {
                break;
              
                 case 6:
-                    System.out.println(borrow.availableBookList);  
+                    System.out.println(borrow.availableBookList); 
                     Book book= myBookFactory.searchingBook();
                      student student=students.searchStudentById(students.getStudentList()); 
                        String name=book.getID();
@@ -137,9 +136,9 @@ public class MyLittleLibrary {
                       if(valid){
                                 book.Enqueue(student);
                                 System.out.println("\nWAITING QUEUE FOR THIS BOOK\n"+book.getList(book));
-                    
+                                System.out.println("\nThe first student of the queue is:"+book.First());
 //                               System.out.println(book.getList(book));
-//                               System.out.println(book.First());
+                              
                       }
                break;
                 
@@ -149,17 +148,25 @@ public class MyLittleLibrary {
                break;
                   case 8:
                                 
-                      System.out.println(n.optionWiser());
-               
+                      System.out.println(borrow.recordsOfBorrowings);  
+                       student student1=students.searchStudentById(students.getStudentList()); 
+                       String studentName=student1.getStudentName();
+                       boolean hasRecord=false;
+                       for(int i=0; i<=borrow.recordsOfBorrowings.size()-1; i++){
+                     if(  borrow.recordsOfBorrowings.get(i).getBorrower().getStudentName().equals(studentName)){
+                         hasRecord=true;
+                         System.out.println( "RECORDS BELONG TO THIS STUDENT\n"+borrow.recordsOfBorrowings.get(i));
+                     
+                     }
+                     else if ((i==borrow.recordsOfBorrowings.size())&&hasRecord==false)
+                     {System.out.println("NO RECORD FOR THIS STUDENT\n");}
+                       }
                break;
              
                 case 9:
-                 
-                   
-               break;
-                case 10:
-                     valid=false;
+                      valid=false;
                      break;
+                
           
                 case 0:
                       System.out.println("                             LİBRARY MAİN MENU\n");
@@ -171,9 +178,8 @@ public class MyLittleLibrary {
         System.out.println("5-) >>> Register that a student has borrowed a book.\n<<<");
         System.out.println("6-) >>> Add that reader to waiting list (queue). <<<\n");
         System.out.println("7-) >>> Register that a student has returned a book.\n<<<");
-        System.out.println("8-) >>> Display to the user the next student waiting for specific book <<<\n");
-        System.out.println("9-) >>> For a specific student, list the books that they have borrowed\n<<<");
-        System.out.println("10-)>>> EXIT THE PROGRAM\n");
+        System.out.println("8-) >>> For a specific student, list the books that they have borrowed\n<<<");
+        System.out.println("9-)>>> EXIT THE PROGRAM\n");
         System.out.println("0-) >>> Go back to main menu <<<\n");
                   
                break;

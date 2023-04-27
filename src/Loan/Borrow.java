@@ -25,7 +25,7 @@ import student.studentFactory;
 public class Borrow {
       studentFactory factory=new studentFactory();
       BookFactory myBookFactory= new BookFactory();
-      List<Loan> recordsOfBorrowings = new ArrayList<>();  
+      public List<Loan> recordsOfBorrowings = new ArrayList<>();  
       public List<Book> availableBookList = new ArrayList<>(); 
       LoanUtility n=new LoanUtility();
      
@@ -68,9 +68,11 @@ public boolean borrowBook(ArrayList<student> studentList) throws FileNotFoundExc
                    System.out.println("\nYOU HAVE BORROWED THE BOOK SUCCESFULLY \n");
                  isFound =true;
                       Loan borrow = new Loan(myBook, myStudent, new Date(), null);
-                  this.recordsOfBorrowings.add(borrow);
+                 
                   Borrow(availableBookList.get(i));
-                 this.availableBookList.remove(availableBookList.get(i)); }
+                 this.availableBookList.remove(availableBookList.get(i)); 
+                 this.recordsOfBorrowings.add(borrow);}
+            
     }
         if (!isFound) {
             System.out.println("THE BOOK HAS ALREADY BEEN BORROWED BY SOMEONE ELSE");
@@ -84,27 +86,41 @@ else{System.out.println("\nOPERATION FAILURE , TRY AGAIN\n");}
 
 
 
-public void ReturnBook(ArrayList<student> studentList) throws FileNotFoundException {
+public boolean ReturnBook(ArrayList<student> studentList) throws FileNotFoundException {
 
     List<Book> books = listOfBooks();
-    System.out.println(availableBookList);
-   
-  Book myBook=myBookFactory.searchingBookbyId(books);
+    //  System.out.println(availableBookList);
+    Book myBook=myBookFactory.searchingBookbyId(books);
+    
+  if (myBook==null){
+      System.out.println("TRY AGAIN ! \n");
+         return false;}
+
   student myStudent=factory.searchStudentById(studentList);
+  if (myStudent==null){
+      System.out.println("TRY AGAIN ! \n");
+         return false;}
+ 
   String name=myBook.getID();
-
+boolean isReturned = false;
+ boolean  valid=true;
     if (myBook!=null && myStudent!=null){
-       for (int i = 0; i < availableBookList.size(); i++) {
-            if (!name.equalsIgnoreCase(availableBookList.get(i).getID())) { 
-                System.out.println("\nYOU HAVE RETURNED THE BOOK SUCCESSFULY\n");
+        
+         for (int i = 0; i < availableBookList.size(); i++) {
+                           if (name.equalsIgnoreCase(availableBookList.get(i).getID())) { 
+                             System.out.println("\nQUEUE IS NOT NECESSERY.BOOK IS ALREADY AVAILABLE\n");
+                             isReturned=false;
+                            }}
+                      if(valid){
+                               System.out.println("\nYOU HAVE RETURNED THE BOOK SUCCESSFULY\n");
                   Loan returnTheBook = new Loan(myBook, myStudent, null, new Date());
+                  ReturnTheBook(myBook);
                   this.recordsOfBorrowings.add(returnTheBook);
-                  ReturnTheBook(availableBookList.get(i));
-            break;}
-            else{System.out.println("\nRETURN IS NOT SUCCESSFULL\n");}
-    }}
-    else{System.out.println("\nOPERATION FAILURE\n");}
-}
+                  isReturned=true;
+                      }
+                      // System.out.println(availableBookList);
+     }   
+    return isReturned;}
 
 
 
@@ -114,9 +130,12 @@ public void ReturnBook(ArrayList<student> studentList) throws FileNotFoundExcept
 
 
 
+}     
+        
+     
 
 
-}
+
 
 
 
