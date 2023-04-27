@@ -29,14 +29,14 @@ public class MyLittleLibrary {
         // TODO code application logic here
        // MyLibrary2 myLibrary = new MyLibrary2();
       
-        System.out.println(listOfBooks());
+       System.out.println(listOfBooks());
        Borrow borrow=new Borrow();
-        BookFactory myBookFactory=new BookFactory();
+       BookFactory myBookFactory=new BookFactory();
        studentFactory students=new studentFactory();
-     ArrayList<student> StudentList=students.createStudentFile();
+       ArrayList<student> StudentList=students.createStudentFile();
     
          int myInput; 
-     boolean valid=true;
+       boolean valid=true;
 
        Scanner myScanner=new Scanner(System.in);
       
@@ -119,7 +119,7 @@ public class MyLittleLibrary {
                break;
              
                 case 6:
-                    System.out.println(borrow.availableBookList); 
+                //    System.out.println(borrow.availableBookList); 
                     Book book= myBookFactory.searchingBook();
                      student student=students.searchStudentById(students.getStudentList()); 
                        String name=book.getID();
@@ -144,7 +144,7 @@ public class MyLittleLibrary {
                break;
                   case 8:
                                 
-                      System.out.println(borrow.recordsOfBorrowings);  
+                    //  System.out.println(borrow.recordsOfBorrowings);  
                        student student1=students.searchStudentById(students.getStudentList()); 
                        String studentName=student1.getStudentName();
                        boolean hasRecord=false;
@@ -195,9 +195,6 @@ public class MyLittleLibrary {
        
         
     }
-           
-    
- 
     }  
     
 
