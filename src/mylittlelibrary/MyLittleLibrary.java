@@ -165,7 +165,7 @@ public class MyLittleLibrary {
                 
           
                 case 0:
-                      System.out.println("                             LİBRARY MAİN MENU\n");
+                      System.out.println("                           MY LTTLE LIBRARY MAIN MENU\n");
         System.out.println("**************************************************************************************\n");
         System.out.println("1-) >>> Search for a specific book by title and/or author name. <<< \n");
         System.out.println("2-) >>> List all books by title and/or author name alphabetical order <<<\n");

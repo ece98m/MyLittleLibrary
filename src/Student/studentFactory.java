@@ -36,7 +36,7 @@ import java.util.Scanner;
 public ArrayList<student> createStudentFile(){
     
    
-        for (int i=0; i<10; i++){
+        for (int i=0; i<100; i++){
         String[] name = generateName();  
         student newStudent=new student(name[0],name[1]);
         studentList.add(newStudent);
